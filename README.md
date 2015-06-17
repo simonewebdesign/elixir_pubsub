@@ -1,10 +1,12 @@
-# Elixir Publish-Subscribe
+# Elixir PubSub
 
-This is a utility library that implements a pub-sub mechanism to ease the burden of communication on the business logic processes.
+This is a Publish-Subscribe utility library that implements a pub-sub mechanism to ease the burden of communication on the business logic processes.
 
-## Usage
+## How to use it
 
-```
+It's very easy to use, an example below.
+
+``` elixir
 topic1 = :erlang
 topic2 = :elixir
 
