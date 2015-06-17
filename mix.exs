@@ -4,12 +4,12 @@ defmodule PubSub.Mixfile do
   def project do
     [app: :pubsub,
      version: "0.0.1",
-     description: "Publish-Subscribe utility",
      elixir: "~> 1.0",
+     description: "Publish-Subscribe utility",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
-     deps: deps,
-     links: %{:github => 'https://github.com/simonewebdesign/elixir_pubsub'}]
+     package: package,
+     deps: deps]
   end
 
   # Configuration for the OTP application
@@ -30,5 +30,11 @@ defmodule PubSub.Mixfile do
   # Type `mix help deps` for more examples and options
   defp deps do
     []
+  end
+
+  defp package do
+    [# These are the default files included in the package
+     licenses: ["MIT"],
+     links: %{"GitHub" => "https://github.com/simonewebdesign/elixir_pubsub"}]
   end
 end
