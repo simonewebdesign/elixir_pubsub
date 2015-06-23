@@ -3,7 +3,7 @@ defmodule PubSub do
 
   @type topic :: binary
   @type message :: binary
-  
+
   ## Client API
 
   @doc """
@@ -13,26 +13,57 @@ defmodule PubSub do
     GenServer.start_link(__MODULE__, :ok, [{:name, __MODULE__}])
   end
 
+  @doc """
+  Subscribes a process to the given topic.
+
+  ## Example
+
+      iex> PubSub.subscribe(pid, :my_topic)
+      :ok
+  """
   @spec subscribe(pid, topic) :: :ok
   def subscribe(pid, topic) do
     GenServer.cast(__MODULE__, {:subscribe, %{topic: topic, pid: pid}})
   end
 
+  @doc """
+  Unsubscribes a process from a given topic.
+
+  ## Example
+
+      iex> PubSub.unsubscribe(pid, :my_topic)
+      :ok
+  """
   @spec unsubscribe(pid, topic) :: :ok
   def unsubscribe(pid, topic) do
     GenServer.cast(__MODULE__, {:unsubscribe, %{topic: topic, pid: pid}})
   end
 
+  @doc """
+  Delivers a message to the given topic.
+
+  ## Example
+
+      iex> PubSub.publish(:my_topic, "Hi there!")
+      :ok
+  """
   @spec publish(binary, message) :: :ok
   def publish(topic, message) do
     GenServer.cast(__MODULE__, {:publish, %{topic: topic, message: message}})
   end
 
+  @doc """
+  Returns a list of pids representing the processes that are currently
+  subscribed to the given topic.
+  """
   @spec subscribers(topic) :: [pid]
   def subscribers(topic) do
     GenServer.call(__MODULE__, {:subscribers, topic})
   end
-  
+
+  @doc """
+  Returns a list of the current topics.
+  """
   @spec topics() :: [topic]
   def topics() do
     GenServer.call(__MODULE__, {:topics})
