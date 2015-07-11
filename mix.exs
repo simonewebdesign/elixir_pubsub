@@ -3,7 +3,7 @@ defmodule PubSub.Mixfile do
 
   def project do
     [app: :pubsub,
-     version: "0.0.1",
+     version: "0.0.2",
      elixir: "~> 1.0",
      description: "Publish-Subscribe utility",
      build_embedded: Mix.env == :prod,

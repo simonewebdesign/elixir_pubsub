@@ -11,7 +11,7 @@ You need to add this library as a dependency to your `mix.exs` file. For example
 
 ``` elixir
 defp deps do
-  [{:pubsub, "~> 0.0.1"}]
+  [{:pubsub, "~> 0.0.2"}]
 end
 ```
 
