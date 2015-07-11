@@ -69,7 +69,8 @@ defmodule PubSub do
     GenServer.call(__MODULE__, {:topics})
   end
 
-  # Callbacks
+
+  ## Callbacks
 
   def init(_args) do
     Process.flag(:trap_exit, true)
@@ -84,15 +85,14 @@ defmodule PubSub do
 
   def handle_cast({:unsubscribe, %{topic: topic, pid: pid}}, state) do
     Process.unlink(pid)
-    new_list = unsubscribe_from_topic(topic, state, pid)
-
+    new_list = get_subscribers(topic, state) |> List.delete(pid)
     new_state = Map.put(state, topic, new_list)
     {:noreply, new_state}
   end
 
   def handle_cast({:publish, %{topic: topic, message: message}}, state) do
-    for sub <- get_subscribers(topic, state) do
-      send(sub, message)
+    for subscriber <- get_subscribers(topic, state) do
+      send(subscriber, message)
     end
     {:noreply, state}
   end
@@ -105,20 +105,19 @@ defmodule PubSub do
     {:reply, get_topics(state), state}
   end
 
-  def handle_info({:EXIT, pid, reason}, state) do
-    new_state = get_topics(state) |> remove_from_topic(pid, state)
+  def handle_info({:EXIT, pid, _reason}, state) do
+    new_state = get_topics(state) |> delete_pid_from_list(pid, state)
     {:noreply, new_state}
   end
 
-  def remove_from_topic([], _pid, state), do: state
-  def remove_from_topic([topic | tail], pid, state) do
-    new_list = unsubscribe_from_topic(topic, state, pid)
-    new_state = Map.put(state, topic, new_list)
-    remove_from_topic(tail, pid, new_state)
-  end
 
-  defp unsubscribe_from_topic(topic, state, pid) do
-    get_subscribers(topic, state) |> List.delete(pid)
+  ## Private
+
+  defp delete_pid_from_list([], _pid, state), do: state
+  defp delete_pid_from_list([topic | tail], pid, state) do
+    new_list = get_subscribers(topic, state) |> List.delete(pid)
+    new_state = Map.put(state, topic, new_list)
+    delete_pid_from_list(tail, pid, new_state)
   end
 
   defp get_subscribers(topic, state) do
