@@ -4,6 +4,7 @@ A Publish-Subscribe utility module that implements a mechanism to ease the burde
 
 Fully OTP compliant, based on GenServer.
 
+
 ## Getting started
 
 You need to add this library as a dependency to your `mix.exs` file. For example:
@@ -15,6 +16,18 @@ end
 ```
 
 Then run `mix deps.get` in your shell to fetch the dependencies.
+
+
+## API Reference
+
+@type topic :: term
+@type msg   :: term
+@spec subscribe(topic)         :: :ok
+@spec unsubscribe(topic)       :: :ok
+@spec publish(topic, message)  :: :ok
+@spec subscribers(topic)       :: [pid]
+@spec topics()                 :: [topic]
+
 
 ## How to use it
 
