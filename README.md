@@ -1,6 +1,8 @@
-# Elixir PubSub
+# Elixir Publish Subscribe
 
-This is a Publish-Subscribe utility library that implements a pub-sub mechanism to ease the burden of communication on the business logic processes.
+A Publish-Subscribe utility module that implements a mechanism to ease the burden of communication on your business logic processes.
+
+Fully OTP compliant, based on GenServer.
 
 ## Getting started
 
@@ -18,7 +20,7 @@ Then run `mix deps.get` in your shell to fetch the dependencies.
 
 It's very easy to use, an example below.
 
-Let's say your client implementation looks like this:
+Assuming your client process looks like this:
 
 ``` elixir
 defmodule Client do
@@ -38,7 +40,7 @@ defmodule Client do
 end
 ```
 
-With `PubSub` you can do stuff like this:
+With `PubSub` you can do this:
 
 ``` elixir
 iex(1)> {topic1, topic2} = {:erlang, :elixir}
