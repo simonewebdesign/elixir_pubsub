@@ -20,6 +20,7 @@ Then run `mix deps.get` in your shell to fetch the dependencies.
 
 ## API Reference
 
+``` elixir
 @type topic :: term
 @type msg   :: term
 @spec subscribe(topic)         :: :ok
@@ -27,6 +28,7 @@ Then run `mix deps.get` in your shell to fetch the dependencies.
 @spec publish(topic, message)  :: :ok
 @spec subscribers(topic)       :: [pid]
 @spec topics()                 :: [topic]
+```
 
 
 ## How to use it
