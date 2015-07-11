@@ -7,7 +7,7 @@ Fully OTP compliant, based on GenServer.
 
 ## Getting started
 
-You need to add this library as a dependency to your `mix.exs` file. For example:
+Add pubsub as a dependency to your `mix.exs` file:
 
 ``` elixir
 defp deps do
@@ -20,20 +20,10 @@ Then run `mix deps.get` in your shell to fetch the dependencies.
 
 ## API Reference
 
-``` elixir
-@type topic :: term
-@type msg   :: term
-@spec subscribe(topic)         :: :ok
-@spec unsubscribe(topic)       :: :ok
-@spec publish(topic, message)  :: :ok
-@spec subscribers(topic)       :: [pid]
-@spec topics()                 :: [topic]
-```
+http://hexdocs.pm/pubsub/0.0.2/PubSub.html
 
 
-## How to use it
-
-It's very easy to use, an example below.
+## Examples
 
 Assuming your client process looks like this:
 
