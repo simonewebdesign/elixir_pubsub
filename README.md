@@ -1,8 +1,6 @@
-# Elixir Publish Subscribe
+# Elixir Publish/Subscribe
 
-A Publish-Subscribe utility module that implements a mechanism to ease the burden of communication on your business logic processes.
-
-Fully OTP compliant, based on GenServer.
+A Publish/Subscribe utility module that frees your business logic processes from the burden of communication.
 
 
 ## Getting started
@@ -16,11 +14,6 @@ end
 ```
 
 Then run `mix deps.get` in your shell to fetch the dependencies.
-
-
-## API Reference
-
-http://hexdocs.pm/pubsub/0.0.2/PubSub.html
 
 
 ## Examples
@@ -78,3 +71,7 @@ iex(8)> PubSub.publish(topic2, "#{topic2} is so cool, dude")
 "Tim received `elixir is so cool, dude`"
 :ok
 ```
+
+## API Reference
+
+http://hexdocs.pm/pubsub/0.0.2/PubSub.html
