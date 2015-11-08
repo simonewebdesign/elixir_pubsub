@@ -9,7 +9,9 @@ Add pubsub as a dependency to your `mix.exs` file:
 
 ``` elixir
 defp deps do
-  [{:pubsub, "~> 0.0.2"}]
+  [
+    {:pubsub, "~> 0.0.2"}
+  ]
 end
 ```
 
