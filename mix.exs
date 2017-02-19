@@ -9,7 +9,9 @@ defmodule PubSub.Mixfile do
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      package: package,
-     deps: []]
+     deps: deps(),
+     test_coverage: [tool: ExCoveralls],
+    ]
   end
 
   # Configuration for the OTP application
@@ -23,5 +25,10 @@ defmodule PubSub.Mixfile do
     [contributors: ["Simone Vittori"],
      licenses: ["MIT"],
      links: %{"GitHub" => "https://github.com/simonewebdesign/elixir_pubsub"}]
+  end
+
+  defp deps do
+    [{:excoveralls, "> 0.0.0", only: :test},
+    ]
   end
 end
