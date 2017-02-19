@@ -1,4 +1,4 @@
-# Elixir Publish/Subscribe
+# Elixir Publish/Subscribe [![Build Status](https://travis-ci.org/simonewebdesign/elixir_pubsub.svg?branch=master)](https://travis-ci.org/simonewebdesign/elixir_pubsub) [![Coverage Status](https://coveralls.io/repos/github/simonewebdesign/elixir_pubsub/badge.svg?branch=master)](https://coveralls.io/github/simonewebdesign/elixir_pubsub?branch=master)
 
 A Publish/Subscribe utility module that frees your business logic processes from the burden of communication.
 
