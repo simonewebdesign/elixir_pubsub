@@ -127,11 +127,11 @@ defmodule PubSub do
   end
 
   defp get_subscribers(topic, state) do
-    Dict.get(state, topic, [])
+    Map.get(state, topic, [])
   end
 
   defp get_topics(state) do
-    Dict.keys(state)
+    Map.keys(state)
   end
 
 end

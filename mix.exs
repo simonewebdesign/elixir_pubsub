@@ -8,7 +8,7 @@ defmodule PubSub.Mixfile do
      description: "Publish-Subscribe utility",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
-     package: package,
+     package: package(),
      deps: deps(),
      test_coverage: [tool: ExCoveralls],
     ]
