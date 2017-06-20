@@ -28,7 +28,7 @@ defmodule PubSub.Mixfile do
   end
 
   defp package do
-    [contributors: ["Simone Vittori"],
+    [maintainers: ["Simone Vittori"],
      licenses: ["MIT"],
      links: %{"GitHub" => "https://github.com/simonewebdesign/elixir_pubsub"}]
   end
