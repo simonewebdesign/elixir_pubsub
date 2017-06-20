@@ -29,6 +29,7 @@ defmodule PubSub.Mixfile do
 
   defp deps do
     [{:excoveralls, "> 0.0.0", only: :test},
+     {:ex_doc, "~> 0.14", only: :dev, runtime: false},
     ]
   end
 end
