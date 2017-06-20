@@ -11,6 +11,12 @@ defmodule PubSub.Mixfile do
      package: package(),
      deps: deps(),
      test_coverage: [tool: ExCoveralls],
+
+     # Docs
+     name: "PubSub",
+     source_url: "https://github.com/simonewebdesign/elixir_pubsub",
+     docs: [main: "PubSub", # The main page in the docs
+            extras: ["README.md"]]
     ]
   end
 
