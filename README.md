@@ -10,7 +10,7 @@ Add pubsub as a dependency to your `mix.exs` file:
 ``` elixir
 defp deps do
   [
-    {:pubsub, "~> 0.0.2"}
+    {:pubsub, "~> 1.0.0"}
   ]
 end
 ```
@@ -76,4 +76,4 @@ iex(8)> PubSub.publish(topic2, "#{topic2} is so cool, dude")
 
 ## API Reference
 
-http://hexdocs.pm/pubsub/0.0.2/PubSub.html
+http://hexdocs.pm/pubsub/PubSub.html
