@@ -1,6 +1,6 @@
 defmodule PubSub do
   @moduledoc """
-  Publish-Subscribe utility process. Use start_link/0 to start it:
+  Publish-Subscribe utility process. Use `start_link/0` to start it:
 
       PubSub.start_link()
   """
