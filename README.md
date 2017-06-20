@@ -1,16 +1,16 @@
-# Elixir Publish/Subscribe [![Build Status](https://travis-ci.org/simonewebdesign/elixir_pubsub.svg?branch=master)](https://travis-ci.org/simonewebdesign/elixir_pubsub) [![Coverage Status](https://coveralls.io/repos/github/simonewebdesign/elixir_pubsub/badge.svg?branch=master)](https://coveralls.io/github/simonewebdesign/elixir_pubsub?branch=master)
+# Elixir Publish/Subscribe [![Build Status](https://travis-ci.org/simonewebdesign/elixir_pubsub.svg?branch=master)](https://travis-ci.org/simonewebdesign/elixir_pubsub) [![Coverage Status](https://coveralls.io/repos/github/simonewebdesign/elixir_pubsub/badge.svg?branch=master)](https://coveralls.io/github/simonewebdesign/elixir_pubsub?branch=master) [![Total Downloads](https://img.shields.io/hexpm/dt/pubsub.svg)](https://hex.pm/packages/pubsub)
 
 A Publish/Subscribe utility module that frees your business logic processes from the burden of communication.
 
 
-## Getting started
+## Getting Started
 
-Add pubsub as a dependency to your `mix.exs` file:
+Add `:pubsub` as a dependency to your `mix.exs` file:
 
 ``` elixir
 defp deps do
   [
-    {:pubsub, "~> 1.0.0"}
+    {:pubsub, "~> 1.0"}
   ]
 end
 ```
@@ -32,7 +32,7 @@ defmodule Client do
   def loop(name) do
     receive do
       message ->
-        IO.inspect "#{name} received `#{message}`"
+        IO.puts "#{name} received `#{message}`"
         loop(name)
     end
   end
@@ -76,4 +76,4 @@ iex(8)> PubSub.publish(topic2, "#{topic2} is so cool, dude")
 
 ## API Reference
 
-http://hexdocs.pm/pubsub/PubSub.html
+https://hexdocs.pm/pubsub/1.0.0/PubSub.html
