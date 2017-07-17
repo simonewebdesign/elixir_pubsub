@@ -24,6 +24,7 @@ defmodule PubSub do
 
   ## Example
 
+      iex> pid = self()
       iex> PubSub.subscribe(pid, :my_topic)
       :ok
   """
@@ -37,6 +38,7 @@ defmodule PubSub do
 
   ## Example
 
+      iex> pid = self()
       iex> PubSub.unsubscribe(pid, :my_topic)
       :ok
   """

@@ -1,5 +1,6 @@
 defmodule PubSubTest do
   use ExUnit.Case
+  doctest PubSub
 
   test "processes can subscribe to topics" do
     [pid1, pid2, pid3] = spawn_multiple(3)
