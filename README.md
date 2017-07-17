@@ -1,4 +1,6 @@
-# Elixir Publish/Subscribe [![Build Status](https://travis-ci.org/simonewebdesign/elixir_pubsub.svg?branch=master)](https://travis-ci.org/simonewebdesign/elixir_pubsub) [![Coverage Status](https://coveralls.io/repos/github/simonewebdesign/elixir_pubsub/badge.svg?branch=master)](https://coveralls.io/github/simonewebdesign/elixir_pubsub?branch=master) [![Total Downloads](https://img.shields.io/hexpm/dt/pubsub.svg)](https://hex.pm/packages/pubsub)
+# Elixir Publish/Subscribe
+
+[![Build Status](https://travis-ci.org/simonewebdesign/elixir_pubsub.svg?branch=master)](https://travis-ci.org/simonewebdesign/elixir_pubsub) [![Coverage Status](https://coveralls.io/repos/github/simonewebdesign/elixir_pubsub/badge.svg?branch=master)](https://coveralls.io/github/simonewebdesign/elixir_pubsub?branch=master) [![Documentation](https://inch-ci.org/github/simonewebdesign/elixir_pubsub.svg?branch=master)](https://hexdocs.pm/pubsub/PubSub.html) [![Total Downloads](https://img.shields.io/hexpm/dt/pubsub.svg)](https://hex.pm/packages/pubsub)
 
 A Publish/Subscribe utility module that frees your business logic processes from the burden of communication.
 
@@ -76,4 +78,4 @@ iex(8)> PubSub.publish(topic2, "#{topic2} is so cool, dude")
 
 ## API Reference
 
-https://hexdocs.pm/pubsub/1.0.0/PubSub.html
+https://hexdocs.pm/pubsub/PubSub.html
