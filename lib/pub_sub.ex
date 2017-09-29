@@ -63,6 +63,14 @@ defmodule PubSub do
   @doc """
   Returns a list of pids representing the processes that are currently
   subscribed to the given topic.
+
+  ## Example
+
+      iex> pid = self()
+      iex> PubSub.subscribe(pid, :my_topic)
+      iex> [subscriber] = PubSub.subscribers(:my_topic)
+      iex> subscriber == pid
+      true
   """
   @spec subscribers(topic) :: [pid]
   def subscribers(topic) do
@@ -71,6 +79,14 @@ defmodule PubSub do
 
   @doc """
   Returns a list of the current topics.
+
+  ## Example
+
+      iex> pid = self()
+      iex> PubSub.subscribe(pid, :my_topic)
+      iex> PubSub.subscribe(pid, :your_topic)
+      iex> PubSub.topics
+      [:my_topic, :your_topic]
   """
   @spec topics() :: [topic]
   def topics() do
