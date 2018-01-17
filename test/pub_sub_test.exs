@@ -35,6 +35,31 @@ defmodule PubSubTest do
     assert PubSub.subscribers(topic2) == [pid3]
   end
 
+  test "processes can subscribe by name" do
+    [ pid ] = spawn_multiple(1)
+    true = Process.register(pid, :name_a)
+    PubSub.subscribe(:name_a, :topic1)
+    assert PubSub.subscribers(:topic1) == [pid]
+  end
+  
+  test "processes can unsubscribe by name" do
+    [ pid ] = spawn_multiple(1)
+    true = Process.register(pid, :name_b)
+    PubSub.subscribe(:name_b, :topic1)
+    assert PubSub.subscribers(:topic1) == [pid]
+    PubSub.unsubscribe(:name_b, :topic1)
+    assert PubSub.subscribers(:topic1) == []
+  end
+  
+  test "processes can subscribe by name and unsubscribe by pid" do
+    [ pid ] = spawn_multiple(1)
+    true = Process.register(pid, :name_c)
+    PubSub.subscribe(:name_c, :topic1)
+    assert PubSub.subscribers(:topic1) == [pid]
+    PubSub.unsubscribe(pid, :topic1)
+    assert PubSub.subscribers(:topic1) == []
+  end
+  
   test "list of current topics can be retrieved" do
     pid = spawn(fn -> receive do end end)
     {topic1, topic2, topic3} = {:elixir, :erlang, :opensource}
@@ -47,7 +72,7 @@ defmodule PubSubTest do
 
   test "process can publish a message to a topic" do
     topic = :elixir
-    PubSub.subscribe(self, topic)
+    PubSub.subscribe(self(), topic)
     PubSub.publish(topic, "Hello!")
     assert_receive "Hello!"
   end

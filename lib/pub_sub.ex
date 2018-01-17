@@ -102,12 +102,14 @@ defmodule PubSub do
   end
 
   def handle_cast({:subscribe, %{topic: topic, pid: pid}}, state) do
+    pid = find_process(pid)
     Process.link(pid)
     new_state = Map.put(state, topic, [pid | get_subscribers(topic, state)])
     {:noreply, new_state}
   end
 
   def handle_cast({:unsubscribe, %{topic: topic, pid: pid}}, state) do
+    pid = find_process(pid)
     Process.unlink(pid)
     new_list = get_subscribers(topic, state) |> List.delete(pid)
     new_state = Map.put(state, topic, new_list)
@@ -152,4 +154,12 @@ defmodule PubSub do
     Map.keys(state)
   end
 
+  defp find_process(pid) when is_pid(pid) do
+    pid
+  end
+
+  defp find_process(pid) when is_atom(pid) do
+    Process.whereis(pid)
+  end
+  
 end
