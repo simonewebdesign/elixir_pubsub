@@ -15,7 +15,9 @@ defmodule PubSub do
   @doc """
   Starts the server.
   """
-  def start_link() do
+  @spec start_link() :: GenServer.on_start()
+  @spec start_link(list) :: GenServer.on_start()
+  def start_link(_args \\ []) do
     GenServer.start_link(__MODULE__, :ok, [{:name, __MODULE__}])
   end
 
@@ -93,6 +95,13 @@ defmodule PubSub do
     GenServer.call(__MODULE__, {:topics})
   end
 
+  @spec child_spec(list) :: map
+  def child_spec(arg) do
+    %{
+      id: __MODULE__,
+      start: {__MODULE__, :start_link, [arg]}
+    }
+  end
 
   ## Callbacks
 
@@ -161,5 +170,4 @@ defmodule PubSub do
   defp find_process(pid) when is_atom(pid) do
     Process.whereis(pid)
   end
-  
 end
