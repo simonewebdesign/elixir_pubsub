@@ -7,8 +7,8 @@ defmodule PubSub do
 
   use GenServer
 
-  @type topic :: binary
-  @type message :: binary
+  @type topic :: atom
+  @type message :: any
 
   ## Client API
 
@@ -55,7 +55,7 @@ defmodule PubSub do
       iex> PubSub.publish(:my_topic, "Hi there!")
       :ok
   """
-  @spec publish(binary, message) :: :ok
+  @spec publish(topic, message) :: :ok
   def publish(topic, message) do
     GenServer.cast(__MODULE__, {:publish, %{topic: topic, message: message}})
   end
