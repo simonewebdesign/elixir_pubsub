@@ -11,6 +11,13 @@ defmodule PubSubTest do
     end
   end
 
+  test "child_spec returns the child spec for supervisors" do
+    assert PubSub.child_spec(arg: 1) == %{
+      id: PubSub,
+      start: {PubSub, :start_link, [[arg: 1]]}
+    }
+  end
+
   test "processes can subscribe to topics" do
     [pid1, pid2, pid3] = spawn_multiple(3)
     {topic1, topic2} = {:erlang, :elixir}
