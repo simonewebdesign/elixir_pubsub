@@ -30,6 +30,15 @@ defmodule PubSubTest do
     assert PubSub.subscribers(topic2) == [pid3]
   end
 
+  test "duplicate subscriptions are ignored" do
+    [pid1] = spawn_multiple(1)
+
+    PubSub.subscribe(pid1, :topic)
+    PubSub.subscribe(pid1, :topic)
+
+    assert PubSub.subscribers(:topic) == [pid1]
+   end
+
   test "processes can unsubscribe from topics" do
     [pid1, pid2, pid3] = spawn_multiple(3)
     {topic1, topic2} = {:erlang, :elixir}
