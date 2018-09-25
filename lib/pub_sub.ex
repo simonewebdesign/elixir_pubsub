@@ -113,7 +113,11 @@ defmodule PubSub do
   def handle_cast({:subscribe, %{topic: topic, pid: pid}}, state) do
     pid = find_process(pid)
     Process.link(pid)
-    new_state = Map.put(state, topic, [pid | get_subscribers(topic, state)])
+    subscribers = get_subscribers(topic, state)
+    new_state = case Enum.any?(subscribers, fn p -> p == pid end) do
+      true  -> state
+      false -> Map.put(state, topic, [pid | subscribers])
+    end
     {:noreply, new_state}
   end
 
