@@ -1,15 +1,15 @@
 language: elixir
 
 elixir:
-  - 1.4.4
+  - 1.10.3
 
 otp_release:
-  - 19.2
+  - 23.0
 
-env:
-  - MIX_ENV=test
+env: MIX_ENV=test
 
-script: mix coveralls.travis
+script:
+  - mix coveralls.travis
 
 after_script:
   - MIX_ENV=docs mix deps.get
