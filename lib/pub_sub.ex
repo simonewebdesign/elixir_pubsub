@@ -7,7 +7,7 @@ defmodule PubSub do
 
   use GenServer
 
-  @type topic :: atom
+  @type topic :: atom | binary
   @type message :: any
 
   ## Client API
