@@ -1,4 +1,4 @@
-defmodule PubSub.Mixfile do
+defmodule PubSub.MixProject do
   use Mix.Project
 
   def project do
@@ -6,7 +6,6 @@ defmodule PubSub.Mixfile do
      version: "1.1.3",
      elixir: "~> 1.0",
      description: "Publish-Subscribe utility",
-     build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      package: package(),
      deps: deps(),
@@ -24,7 +23,7 @@ defmodule PubSub.Mixfile do
   #
   # Type `mix help compile.app` for more information
   def application do
-    [applications: [:logger]]
+    [extra_applications: [:logger]]
   end
 
   defp package do
