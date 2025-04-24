@@ -83,7 +83,7 @@ defmodule PubSubTest do
     PubSub.subscribe(pid, topic2)
     PubSub.subscribe(pid, topic3)
 
-    assert PubSub.topics() == [:elixir, :erlang, :opensource]
+    assert Enum.sort(PubSub.topics()) == [:elixir, :erlang, :opensource]
   end
 
   test "process can publish a message to a topic" do
